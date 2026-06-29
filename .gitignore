@@ -1,0 +1,13 @@
+# API keys and secrets
+gemini_key.env
+.env
+*.env
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Local test outputs and scripts
+test_outputs/
+test_script.sh
