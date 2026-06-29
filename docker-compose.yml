@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  agent:
+    build: .
+    volumes:
+      # Mount the workspace folder into the container to refactor scripts
+      - .:/workspace
+    working_dir: /workspace
+    environment:
+      # Inject API key from local environment or .env file
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      # Optional: inject GCP Secret Manager configurations
+      - GCP_PROJECT=${GCP_PROJECT}
+      - GCP_SECRET_NAME=${GCP_SECRET_NAME}
+    # Command to run on a test file inside the container
+    command: ["test_script.sh"]
