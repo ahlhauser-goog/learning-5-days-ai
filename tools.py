@@ -217,9 +217,15 @@ def run_shellcheck() -> str:
             res_str = "shellcheck passed with no issues."
             logger.log_tool_response("Agent", "run_shellcheck", res_str, outcome="clean")
             return res_str
+        elif result.returncode in (-9, 137):
+            res_str = "shellcheck execution skipped (restricted by environment sandbox / SIGKILL)."
+            logger.log_tool_response("Agent", "run_shellcheck", res_str, outcome="sandbox_restricted")
+            return res_str
         else:
             # Replace the temporary filename in the output with the script's actual name
             output = result.stdout.replace(temp_file_path, os.path.basename(state.state.file_path))
+            if not output.strip() and result.stderr:
+                output = result.stderr.replace(temp_file_path, os.path.basename(state.state.file_path))
             res_str = f"shellcheck found the following issues:\n{output}"
             logger.log_tool_response("Agent", "run_shellcheck", res_str, outcome="issues_found")
             return res_str
@@ -298,6 +304,18 @@ def verify_script(command_to_run: str) -> str:
         output.append(status)
         
         res_str = "\n".join(output)
+        
+        # Check if subprocess was killed by a sandbox policy
+        if result.returncode in (-9, 137):
+            res_str = "Execution failed: bash execution was blocked/killed by the environment sandbox (SIGKILL)."
+            logger.log_tool_response(
+                "RefactorTeacherAgent",
+                "verify_script",
+                res_str,
+                outcome="sandbox_restricted"
+            )
+            return res_str
+
         logger.log_tool_response(
             "RefactorTeacherAgent",
             "verify_script",

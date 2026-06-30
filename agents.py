@@ -57,11 +57,12 @@ CRITICAL RULES:
 # We store model configuration inside a Python dictionary.
 # Dictionaries map keys (on the left of the colon ':') to values (on the right).
 # Here, we specify which Gemini model version handles each sub-task:
-# - 'linter': gemini-2.5-flash (fast and cheap for simple checks)
-# - 'teacher': gemini-2.5-pro (highly smart/analytical for drafting code & teaching)
-# - 'compactor': gemini-2.5-flash (fast/cheap for summarizing chat history)
+# - 'linter': gemini-3.5-flash (fast and cheap for simple checks)
+# - 'teacher': gemini-3.1-pro-preview (highly smart/analytical for drafting code & teaching)
+# - 'compactor': gemini-3.5-flash (fast/cheap for summarizing chat history)
 MODEL_ROUTING = {
-    "linter": "gemini-2.5-flash",
-    "teacher": "gemini-2.5-pro",
-    "compactor": "gemini-2.5-flash"
+    "linter": "gemini-3.5-flash",
+    "teacher": "gemini-3.1-pro-preview",
+    "compactor": "gemini-3.5-flash"
 }
+

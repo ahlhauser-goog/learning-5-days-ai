@@ -6,20 +6,10 @@
 # this local Python code to check for syntax errors, check for security risks (like
 # malicious commands), and verify proper variable scoping rules.
 
-# 'os' allows us to delete temporary files from disk when we are done with them.
 import os
-
-# 're' allows us to scan the refactored code for patterns using regular expressions.
 import re
-
-# 'subprocess' allows us to execute other terminal tools (like the bash compiler)
-# from inside Python.
 import subprocess
-
-# 'tempfile' helps us create temporary files that are safely named and cleaned up.
 import tempfile
-
-# 'Tuple' and 'Any' let us define type hints for functions that return multiple values.
 from typing import Dict, Any, Tuple
 
 class PolicyGuardrail:

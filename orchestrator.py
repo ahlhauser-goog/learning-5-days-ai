@@ -170,7 +170,7 @@ class AgentOrchestrator:
         
         try:
             # We call the model to summarize. We use 'await' because generate_content is an async call.
-            # MODEL_ROUTING["compactor"] points to 'gemini-2.5-flash' (cheap/fast model)
+            # MODEL_ROUTING["compactor"] points to 'gemini-3.5-flash' (cheap/fast model)
             res = await self.client.aio.models.generate_content(
                 model=MODEL_ROUTING["compactor"],
                 contents=compaction_prompt
@@ -233,7 +233,7 @@ class AgentOrchestrator:
             # ------------------------------------------------------------------
             # AGENT 1: LINTER AGENT
             # ------------------------------------------------------------------
-            # The linter runs first using a fast model (gemini-2.5-flash) to find issues.
+            # The linter runs first using a fast model (gemini-3.5-flash) to find issues.
             print("\033[1;34m" + "="*80)
             print("Step 1: Running Linter Agent (Model: {})".format(MODEL_ROUTING["linter"]))
             print("="*80 + "\033[0m")
@@ -264,7 +264,7 @@ class AgentOrchestrator:
             # ------------------------------------------------------------------
             # AGENT 2: REFACTOR TEACHER AGENT
             # ------------------------------------------------------------------
-            # Next, we boot up the Teacher Agent using the smart model (gemini-2.5-pro)
+            # Next, we boot up the Teacher Agent using the smart model (gemini-3.1-pro-preview)
             # to guide the refactoring.
             print("\033[1;34m" + "="*80)
             print("Step 2: Starting Interactive Refactor Teacher Agent (Model: {})".format(MODEL_ROUTING["teacher"]))

@@ -2,3 +2,15 @@
 {"timestamp": "2026-06-29T20:35:45.597312+00:00", "agent": "Orchestrator", "event": "session_load", "data": {"session_file": "test_eval_session.json", "success": true, "error": null}}
 {"timestamp": "2026-06-29T20:36:18.699548+00:00", "agent": "Orchestrator", "event": "session_save", "data": {"session_file": "test_eval_session.json", "success": true, "error": null}}
 {"timestamp": "2026-06-29T20:36:18.700686+00:00", "agent": "Orchestrator", "event": "session_load", "data": {"session_file": "test_eval_session.json", "success": true, "error": null}}
+{"timestamp": "2026-06-30T23:20:35.052413+00:00", "agent": "Orchestrator", "event": "start", "data": {"file_path": "[USER_HOME]/.bash_functions", "model_routing": {"linter": "gemini-2.5-flash", "teacher": "gemini-2.5-pro", "compactor": "gemini-2.5-flash"}}}
+{"timestamp": "2026-06-30T23:20:35.053402+00:00", "agent": "LinterAgent", "event": "chat_turn", "data": {"role": "user", "message": "I have loaded the script file. Call get_script_content and run_shellcheck, then output the structured list of issues.", "intent": "Start lint check"}}
+{"timestamp": "2026-06-30T23:22:10.368610+00:00", "agent": "Orchestrator", "event": "session_save", "data": {"session_file": "test_eval_session.json", "success": true, "error": null}}
+{"timestamp": "2026-06-30T23:22:10.369737+00:00", "agent": "Orchestrator", "event": "session_load", "data": {"session_file": "test_eval_session.json", "success": true, "error": null}}
+{"timestamp": "2026-06-30T23:22:24.932311+00:00", "agent": "Orchestrator", "event": "session_save", "data": {"session_file": "test_eval_session.json", "success": true, "error": null}}
+{"timestamp": "2026-06-30T23:22:24.933473+00:00", "agent": "Orchestrator", "event": "session_load", "data": {"session_file": "test_eval_session.json", "success": true, "error": null}}
+{"timestamp": "2026-06-30T23:22:46.213663+00:00", "agent": "Orchestrator", "event": "start", "data": {"file_path": "[USER_HOME]/.bash_functions", "model_routing": {"linter": "gemini-3.5-flash", "teacher": "gemini-3.1-pro-preview", "compactor": "gemini-3.5-flash"}}}
+{"timestamp": "2026-06-30T23:22:46.215102+00:00", "agent": "LinterAgent", "event": "chat_turn", "data": {"role": "user", "message": "I have loaded the script file. Call get_script_content and run_shellcheck, then output the structured list of issues.", "intent": "Start lint check"}}
+{"timestamp": "2026-06-30T23:22:47.545653+00:00", "agent": "Agent", "event": "tool_call", "data": {"tool_name": "get_script_content", "arguments": {}}}
+{"timestamp": "2026-06-30T23:22:47.546469+00:00", "agent": "Agent", "event": "tool_response", "data": {"tool_name": "get_script_content", "response": "Retrieved 14926 characters of code.", "outcome": "success"}}
+{"timestamp": "2026-06-30T23:22:48.467490+00:00", "agent": "Agent", "event": "tool_call", "data": {"tool_name": "run_shellcheck", "arguments": {}}}
+{"timestamp": "2026-06-30T23:22:48.877357+00:00", "agent": "Agent", "event": "tool_response", "data": {"tool_name": "run_shellcheck", "response": "shellcheck found the following issues:\n", "outcome": "issues_found"}}
